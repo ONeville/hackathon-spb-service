@@ -8,14 +8,6 @@ export const dataDumper = [
         "zipCode": 210321
     },
     {
-        "id": "1695392067182-81744247811",
-        "cabinId": 3,
-        "location": "CA-ecxge",
-        "site": "AD-Philadelphia-1",
-        "city": "Philadelphia",
-        "zipCode": 210321
-    },
-    {
         "id": "1695392067182-54085281521",
         "cabinId": 4,
         "location": "CA-jtmlr",

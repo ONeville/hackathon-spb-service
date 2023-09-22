@@ -47,10 +47,10 @@ export class ProcessDataService {
         const params = {
             TableName: tableName,
         };
-
         try {
             const data = await this.dynamoDB.scan(params);
-            return data.Items as any[];
+            this.dynamoDB
+            return (data.Items as any[]);
         } catch (error) {
             throw new Error(
                 `Error fetching ${tableName} from DynamoDB: ${error.message}`,

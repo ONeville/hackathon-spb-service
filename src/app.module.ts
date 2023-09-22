@@ -6,8 +6,7 @@ import { AppService } from './app.service';
 import { HomelessModule } from './homeless/homeless.module';
 import { ServiceOrgModule } from './service-org/service-org.module';
 import { CaseManagementModule } from './case-management/case-management.module';
-import { ProcessFileService } from './core/process-file/process-file.service';
-import { ProcessDataService } from './core/process-data/process-data.service';
+import { ProcessFileService, ProcessDataService } from 'src/core';
 
 @Module({
   imports: [

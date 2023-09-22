@@ -2,33 +2,19 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { CaseManagementService } from './case-management.service';
 import { CreateCaseManagementDto } from './dto/create-case-management.dto';
 import { UpdateCaseManagementDto } from './dto/update-case-management.dto';
+import { Case } from 'src/core';
 
 @Controller('case-management')
 export class CaseManagementController {
-  constructor(private readonly caseManagementService: CaseManagementService) {}
+  constructor(private readonly caseManagementService: CaseManagementService) { }
 
-  @Post()
-  create(@Body() createCaseManagementDto: CreateCaseManagementDto) {
-    return this.caseManagementService.create(createCaseManagementDto);
+  @Post('add')
+  add(@Body() createCaseManagementDto: Case) {
+    return this.caseManagementService.addCase(createCaseManagementDto);
   }
 
-  @Get()
-  findAll() {
-    return this.caseManagementService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.caseManagementService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCaseManagementDto: UpdateCaseManagementDto) {
-    return this.caseManagementService.update(+id, updateCaseManagementDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.caseManagementService.remove(+id);
+  @Get('getCases')
+  async getCases() {
+    return await this.caseManagementService.getCases();
   }
 }

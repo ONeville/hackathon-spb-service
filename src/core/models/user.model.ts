@@ -7,3 +7,13 @@ export class HomelessUser {
         public tagId?: string,
     ) { }
 }
+export interface ExcetData {
+    Cabin: number;
+    FirstName: string;
+    LastName: string;
+    CaseManagement: string;
+    Need: string;
+    Phone: string;
+    MHprovider: string;
+    SUDProvider: string;
+}

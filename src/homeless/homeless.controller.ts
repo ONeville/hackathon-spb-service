@@ -3,13 +3,22 @@ import { HomelessService } from './homeless.service';
 import { CreateHomelessDto } from './dto/create-homeless.dto';
 import { UpdateHomelessDto } from './dto/update-homeless.dto';
 import { HomelessUser } from 'src/core/models/user.model';
-import { ProcessFileService } from 'src/core/process-file/process-file.service';
-import { ProcessDataService } from 'src/core/process-data/process-data.service';
+import { ProcessFileService, ProcessDataService } from 'src/core';
+import { dataDumper } from 'src/core/services/data';
 
 @Controller('homeless')
 export class HomelessController {
   constructor(private readonly homelessService: HomelessService, private fileService: ProcessFileService,
-    private dataService: ProcessDataService) {}
+    private dataService: ProcessDataService) { }
+
+
+  @Post('loadDummyUsers')
+  async loadDummy() {
+    const data = this.fileService.mapData(dataDumper as any[]);
+
+    await this.dataService.batchInsert('cabines-tb', data.cabins);
+    return data.cabins;
+  }
 
   @Post()
   create(@Body() createHomelessDto: HomelessUser) {
@@ -20,7 +29,7 @@ export class HomelessController {
   findAll() {
     return this.homelessService.getHomelessUsers();
   }
-  
+
   @Get('checkS3')
   async checkS3() {
     return await this.fileService.getFileData();

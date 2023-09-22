@@ -20,16 +20,16 @@ export class HomelessController {
   }
 
   @Post('addCabin')
-  addCabin(@Body() createHomelessDto: Cabin) {
-    const request = {
-      "id": "1695392067182-81744247811",
-      "cabinId": 3,
-      "location": "CA-ecxge",
-      "site": "AD-Philadelphia-1",
-      "city": "Philadelphia",
-      "zipCode": 210321
-    };
-    console.log('New request -- ');
+  addCabin(@Body() request: Cabin) {
+    // const request = {
+    //   "id": "1695392067182-81744247811",
+    //   "cabinId": 3,
+    //   "location": "CA-ecxge",
+    //   "site": "AD-Philadelphia-1",
+    //   "city": "Philadelphia",
+    //   "zipCode": 210321
+    // };
+    // console.log('New request -- ');
 
     return this.homelessService.addOneCabin(request);
   }
@@ -39,11 +39,6 @@ export class HomelessController {
     return await this.homelessService.getCabins();
   }
   
-  @Get('getCases')
-  async getCases() {
-    return await this.homelessService.getCase();
-  }
-
   @Get('checkS3')
   async checkS3() {
     return await this.fileService.getFileData();

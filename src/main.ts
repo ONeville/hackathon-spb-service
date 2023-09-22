@@ -15,8 +15,8 @@ async function bootstrap() {
   });
 
   const configDoc = new DocumentBuilder()
-    .setTitle('Cats example')
-    .setDescription('The cats API description')
+    .setTitle('Case Management Service')
+    .setDescription('The Hackathon Case Management')
     .setVersion('1.0')
     .addTag('cats')
     .build();
